@@ -3,9 +3,7 @@ from telegram import Update
 from telegram.ext import Application, MessageHandler, filters, ContextTypes
 from googletrans import Translator
 
-# اقرأ التوكن من المتغيرات البيئية (راح نضيفه في Render)
 TOKEN = os.getenv("7458639531:AAG-Rc5Jzux0AEtBPM5_E9xqD48KpVMnjkg")
-
 translator = Translator()
 
 async def auto_translate(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -13,7 +11,6 @@ async def auto_translate(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not text:
         return
     
-    # كشف اللغة
     detected = translator.detect(text).lang
     if detected != "ar":
         translated = translator.translate(text, dest="ar").text
